@@ -1,0 +1,103 @@
+[versions]
+    min-sdk-version = "22"
+    target-sdk-version = "33"
+    compile-sdk-version = "34"
+
+    kotlin-compiler-extension-version = "1.4.3"
+
+    gradle-plugin-version = "8.1.1"
+    kotlin-version = "1.8.10"
+    devtools-ksp-version = "1.8.10-1.0.9"
+
+    androidx-core-ktx-version = "1.12.0"
+    androidx-lifecycle-runtime-version = "2.6.2"
+    compose-activity-version = "1.8.0"
+    compose-bom-version = "2023.03.00"
+    compose-nav-version = "2.7.5"
+    junit-test-implementation-version = "4.13.2"
+
+    androidx-test-ext-junit-version = "1.1.5"
+    androidx-test-espresso-version = "3.5.1"
+
+    lifecycle-viewmodel-compose-version = "2.6.2"
+    material-icons-extended-version = "1.5.4"
+    hilt-navigation-compose-version = "1.1.0"
+    kotlinx-coroutines-core-version = "1.7.3"
+
+    dagger-hilt-android-version = "2.47"
+    hilt-compiler-version = "1.1.0"
+    androidx-room-version = "2.6.0"
+    room-compiler-version = "2.5.2"
+    room-coroutine-support-version = "2.5.2"
+    retrofit-gson-version = "2.9.0"
+
+
+
+
+
+[libraries]
+    android-ktx = {module = "androidx.core:core-ktx", version.ref = "androidx-core-ktx-version"}
+    androidx-lifecycle-runtime = {module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidx-lifecycle-runtime-version"}
+
+    compose-bom = {module = "androidx.compose:compose-bom", version.ref = "compose-bom-version"}
+    compose-activity = {module = "androidx.activity:activity-compose", version.ref = "compose-activity-version"}
+    compose-ui = {module = "androidx.compose.ui:ui"}
+    compose-graphics = {module = "androidx.compose.ui:ui-graphics"}
+    compose-preview = {module = "androidx.compose.ui:ui-tooling-preview"}
+    compose-material3 = {module = "androidx.compose.material3:material3"}
+    compose-navigation = {module = "androidx.navigation:navigation-compose", version.ref = "compose-nav-version"}
+
+    compose-ui-tooling = {module = "androidx.compose.ui:ui-tooling"}
+    compose-ui-test-manifest = {module = "androidx.compose.ui:ui-test-manifest"}
+
+    junit-test-implementation = {module = "junit:junit", version.ref = "junit-test-implementation-version"}
+
+
+    androidx-test-ext-junit = {module = "androidx.test.ext:junit", version.ref = "androidx-test-ext-junit-version"}
+    androidx-test-espresso = {module = "androidx.test.espresso:espresso-core", version.ref = "androidx-test-espresso-version"}
+    androidx-compose-ui-test = {module = "androidx.compose.ui:ui-test-junit4"}
+
+    lifecycle-viewmodel-compose = {module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "lifecycle-viewmodel-compose-version"}
+    material-icons-extended = {module = "androidx.compose.material:material-icons-extended", version.ref = "material-icons-extended-version"}
+    hilt-navigation-compose = {module = "androidx.hilt:hilt-navigation-compose", version.ref = "hilt-navigation-compose-version"}
+    kotlinx-coroutines-core = {module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinx-coroutines-core-version"}
+    kotlinx-coroutines-android = {module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines-core-version"}
+
+    dagger-hilt-android = {module = "com.google.dagger:hilt-android", version.ref = "dagger-hilt-android-version"}
+    dagger-hilt-android-compiler = {module = "com.google.dagger:hilt-android-compiler", version.ref = "dagger-hilt-android-version"}
+
+
+    hilt-compiler = {module = "androidx.hilt:hilt-compiler", version.ref = "hilt-compiler-version"}
+
+    androidx-room= {module = "androidx.room:room-ktx", version.ref = "androidx-room-version"}
+    androidx-room-runtime= {module = "androidx.room:room-runtime", version.ref = "androidx-room-version"}
+    ksp-room-compiler= {module = "androidx.room:room-compiler", version.ref = "room-compiler-version"}
+    room-coroutine-support= {module = "androidx.room:room-ktx", version.ref = "androidx-room-version"}
+
+    retrofit = {module = "com.squareup.retrofit2:retrofit", version.ref = "retrofit-gson-version"}
+    gson = {module = "com.google.code.gson:gson", version.ref = "retrofit-gson-version"}
+    retrofit-converter = {module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofit-gson-version"}
+
+    kotlinSerializationPlugin = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin-version" }
+    daggerHiltPlugin = { module = "com.google.dagger:hilt-android-gradle-plugin", version.ref = "dagger-hilt-android-version" }
+
+
+
+[bundles]
+    andriodx = ["android-ktx", "androidx-lifecycle-runtime"]
+    compose  = ["compose-activity", "compose-ui", "compose-graphics", "compose-preview", "compose-material3",
+                "compose-navigation"]
+
+    compose-debug  = ["compose-ui-tooling", "compose-ui-test-manifest"]
+
+    androidTestImplementation  = [ "androidx-test-ext-junit", "androidx-test-espresso", "androidx-compose-ui-test"]
+
+
+
+[plugins]
+    android-application = {id= "com.android.application", version.ref = "gradle-plugin-version"}
+    android-library = {id= "com.android.library", version.ref = "gradle-plugin-version"}
+    kotlin-android = {id= "org.jetbrains.kotlin.android", version.ref = "kotlin-version"}
+    android-hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt-compiler-version" }
+    devtools-ksp = {id= "com.google.devtools.ksp", version.ref = "devtools-ksp-version"}
+
