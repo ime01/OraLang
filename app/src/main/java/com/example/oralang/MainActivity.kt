@@ -10,6 +10,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.oralang.presentation.orawordslist.OraLangViewModel
+import com.example.oralang.presentation.orawordslist.OraWordsListScreen
 import com.example.oralang.ui.theme.OraLangTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,28 +21,17 @@ class MainActivity : ComponentActivity() {
             OraLangTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier
+                        .fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    Greeting("OraLang1")
+
+                    val oraLangViewModel = OraLangViewModel()
+
+                    OraWordsListScreen(oraLangViewModel)
+
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    OraLangTheme {
-        Greeting("OraLang")
     }
 }
