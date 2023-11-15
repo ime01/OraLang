@@ -37,6 +37,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.oralang.utils.FLOATING_ACTION_BUTTON
 import com.example.oralang.utils.LOADING_ORA_WORDS
 import com.example.oralang.utils.LOADING_SCREEN_TAG
 import com.example.oralang.utils.Screens
@@ -68,6 +69,8 @@ fun OraWordsListScreen(navController: NavController, viewModel: OraLangViewModel
         Scaffold(
             floatingActionButton = {
                 FloatingActionButton(
+                    modifier = Modifier
+                        .testTag(FLOATING_ACTION_BUTTON),
                     onClick = {
                         navController.navigate(Screens.OraWordUpdateScreen.route)
                     },

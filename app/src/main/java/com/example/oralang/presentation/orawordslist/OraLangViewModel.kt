@@ -22,6 +22,7 @@ class OraLangViewModel @Inject constructor(
     @IoDispatcher private val dispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
+
     private val _state = MutableStateFlow(OraWordsListState(listOf()))
     val state :StateFlow<OraWordsListState> = _state
     private var undoOraWordDeleted: OraWord? = null

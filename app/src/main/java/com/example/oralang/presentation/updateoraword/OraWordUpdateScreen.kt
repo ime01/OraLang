@@ -37,6 +37,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
@@ -50,6 +51,8 @@ import com.example.oralang.presentation.components.CompleteButton
 import com.example.oralang.presentation.components.DeleteButton
 import com.example.oralang.presentation.components.HintTextField
 import com.example.oralang.presentation.components.getOraWordsColors
+import com.example.oralang.utils.FLOATING_ACTION_BUTTON
+import com.example.oralang.utils.UPDATE_ORA_WORD_SCREEN_TAG
 import com.example.oralang.utils.toast
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -217,6 +220,7 @@ fun OraWordUpdateScreen(
         Box(
             contentAlignment = Alignment.TopStart,
             modifier = Modifier
+                .testTag(UPDATE_ORA_WORD_SCREEN_TAG)
                 .fillMaxSize()
                 .background(color = todoColors.backgroundColor)
         ) {

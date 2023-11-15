@@ -78,3 +78,18 @@ fun List<RemoteOraWord>.toOraLocalWordList(): List<LocalOraWord>{
         )
     }
 }
+
+
+fun List<RemoteOraWord>.fromRemoteToOraWordList(): List<OraWord>{
+    return this.map{
+        OraWord(
+            id = it.id,
+            oraWord = it.oraWord,
+            englishWord = it.englishWord,
+            isFavoriteWord = it.isFavoriteWord,
+            wordAudio = it.wordAudio
+        )
+    }
+}
+
+
