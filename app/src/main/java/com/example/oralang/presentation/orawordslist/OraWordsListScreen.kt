@@ -10,17 +10,21 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
+import androidx.compose.material3.SnackbarResult
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.BlendMode.Companion.Screen
 import androidx.compose.ui.platform.LocalConfiguration
@@ -31,10 +35,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.example.oralang.R
-import com.example.oralang.presentation.components.OraItemCard
 import com.example.oralang.utils.Screens
-import com.example.oralang.utils.toast
+import com.example.oralang.utils.UPDATE_SCREEN_NAV_ARGUMENT_ID
 import kotlinx.coroutines.launch
 
 
@@ -46,6 +48,7 @@ fun OraWordsListScreen(navController: NavController, viewModel: OraLangViewModel
 
     val state = viewModel.state.value
     val snackbarHostState = remember { SnackbarHostState() }
+    val scope = rememberCoroutineScope()
 
     val configuration = LocalConfiguration.current
     val isPortrait = configuration.orientation == android.content.res.Configuration.ORIENTATION_PORTRAIT
@@ -60,17 +63,17 @@ fun OraWordsListScreen(navController: NavController, viewModel: OraLangViewModel
 
         Scaffold(
             floatingActionButton = {
-                androidx.compose.material3.FloatingActionButton(
+                FloatingActionButton(
                     onClick = {
                         navController.navigate(Screens.OraWordUpdateScreen.route)
                     },
                     shape = androidx.compose.foundation.shape.CircleShape,
-                    containerColor = androidx.compose.material3.MaterialTheme.colorScheme.primary
+                    containerColor = colorScheme.primary
                 ) {
                     Icon(
                         imageVector = androidx.compose.material.icons.Icons.Default.Add,
                         contentDescription = "Add Ora Word",
-                        tint = androidx.compose.material3.MaterialTheme.colorScheme.onPrimary
+                        tint = colorScheme.onPrimary
                     )
                 }
             },
@@ -78,25 +81,51 @@ fun OraWordsListScreen(navController: NavController, viewModel: OraLangViewModel
             snackbarHost = { SnackbarHost(hostState = snackbarHostState) }
         ) { padding ->
             Box(
-                contentAlignment = androidx.compose.ui.Alignment.TopStart,
+                contentAlignment = Alignment.TopStart,
                 modifier = Modifier
                     .fillMaxSize()
-                    .background(color = androidx.compose.material3.MaterialTheme.colorScheme.background)
+                    .background(color = colorScheme.background)
             ) {
 
                 Column(
                     modifier = Modifier.fillMaxSize()
                 ) {
                     LazyColumn(
-                        modifier = androidx.compose.ui.Modifier
+                        modifier = Modifier
                             .fillMaxSize()
                             .padding(12.dp)
                     ) {
                         items(state.oraWords) { oraWord ->
 
-                            OraItemCard(oraWord){
-                                toast(context, "${oraWord.oraWord} Clicked")
-                            }
+                            OraWordCard(
+                                oraWord = oraWord,
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(4.dp),
+                                onDeleteClick = {
+                                    viewModel.onEvent(OraWordsEvent.Delete(oraWord))
+                                    scope.launch {
+                                        val undo = snackbarHostState.showSnackbar(
+                                            message = "Ora Word Deleted",
+                                            actionLabel = "Undo"
+                                        )
+                                        if(undo == SnackbarResult.ActionPerformed){
+                                            viewModel.onEvent(OraWordsEvent.UndoDelete)
+                                        }
+                                    }
+                                },
+                                onCompleteClick = {
+                                    viewModel.onEvent(OraWordsEvent.ToggleIsFavoriteOraWord(oraWord))
+                                },
+                                onArchiveClick = {
+                                    //viewModel.onEvent(OraWordsEvent.ToggleArchived(oraWord))
+                                },
+                                onCardClick = {
+                                    navController.navigate(
+                                        Screens.OraWordUpdateScreen.route + "?$UPDATE_SCREEN_NAV_ARGUMENT_ID=${oraWord.id}"
+                                    )
+                                }
+                            )
                         }
                     }
                 }

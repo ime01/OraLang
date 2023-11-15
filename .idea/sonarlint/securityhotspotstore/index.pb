@@ -125,3 +125,5 @@ Zapp/src/main/java/com/example/oralang/presentation/updateoraword/OraWordUpdateV
 Vapp/src/main/java/com/example/oralang/presentation/updateoraword/OraWordUpdateEvent.kt,8\7\876ae2a8ac2c2e4bfbea03ce85fcc9f837fecb03
 ‚
 Rapp/src/main/java/com/example/oralang/presentation/components/getOraWordsColors.kt,5\4\54fbeb34d7c8ce69209cb21b06970c63de5284e2
+~
+Napp/src/main/java/com/example/oralang/presentation/orawordslist/OraWordCard.kt,b\7\b7e9cccd62d2e25ea80223d9d32602159db1085d

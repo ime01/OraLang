@@ -74,6 +74,7 @@ fun OraWordUpdateScreen(
 
     val horizontalPadding = 16.dp
     val verticalPadding = if(isPortrait) 16.dp else 2.dp
+    val topBarHeight = if(isPortrait) 64.dp else 0.dp
 
     LaunchedEffect(key1 = true) {
         viewModel.eventFlow.collectLatest { event ->
@@ -113,6 +114,52 @@ fun OraWordUpdateScreen(
                 }
             }
         },
+
+
+
+        topBar = {
+            if (isPortrait) {
+                CenterAlignedTopAppBar(
+                    title = {
+                        Text(
+                            text = "Update Ora Word",
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
+                            style = MaterialTheme.typography.headlineMedium,
+                            color = MaterialTheme.colorScheme.onPrimary
+                        )
+                    },
+                    colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                        containerColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.7f),
+                        scrolledContainerColor = MaterialTheme.colorScheme.primary,
+                        navigationIconContentColor = MaterialTheme.colorScheme.onPrimary,
+                        titleContentColor = MaterialTheme.colorScheme.onPrimary,
+                        actionIconContentColor = MaterialTheme.colorScheme.onPrimary
+                    ),
+                    navigationIcon = {
+                        IconButton(
+                            onClick = {
+                                viewModel.onEvent(OraWordUpdateEvent.Back)
+                            },
+                            modifier = Modifier.padding(start = 8.dp)
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.ArrowBack,
+                                contentDescription = stringResource(R.string.go_back_icon),
+                                tint = MaterialTheme.colorScheme.onPrimary
+                            )
+                        }
+                    },
+                    actions = {},
+                    scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
+                )
+
+            }
+        },
+
+
+
+
 
         bottomBar = {
             if (isPortrait) {
@@ -175,7 +222,7 @@ fun OraWordUpdateScreen(
         ) {
             Column(
                 modifier = Modifier
-                    .padding(top = 12.dp)
+                    .padding(top = topBarHeight)
                     .fillMaxSize()
             ){
                 HintTextField(

@@ -49,33 +49,16 @@ class OraLangRepoImpl ( private val dao: OraWordDao,  private val api: OraWordsA
     }
 
     override suspend fun addOraWord(oraWord: OraWord) {
-        val newId = dao.addOraWord(oraWord.toLocalOraWord())
-        //val id = newId.toInt()
-//        val url = "todo/$id.json"
-//        api.addTodo(url, todo.toRemoteTodoItem().copy(id = id))
+        dao.addOraWord(oraWord.toLocalOraWord())
     }
 
     override suspend fun updateOraWord(oraWord: OraWord) {
         dao.addOraWord(oraWord.toLocalOraWord())
-        //api.updateTodoItem(todo.id, todo.toRemoteTodoItem())
+
     }
 
     override suspend fun deleteOraWord(oraWord: OraWord) {
-//        try{
-//            val response = api.deleteTodo(todo.id)
-//            if(response.isSuccessful){
-//                Log.i("API_DELETE","Response Successful")
-//            }else{
-//                Log.i("API_DELETE","Response Unsuccessful")
-//                Log.i("API_DELETE",response.message())
-//            }
-//        }catch (e: Exception){
-//            when(e){
-//                is UnknownHostException, is ConnectException, is HttpException -> {
-//                    Log.e("HTTP", "Error: Could not delete")
-//                }else -> throw e
-//            }
-//        }
+
         dao.deleteOraWord(oraWord.toLocalOraWord())
     }
 
@@ -83,7 +66,6 @@ class OraLangRepoImpl ( private val dao: OraWordDao,  private val api: OraWordsA
     override suspend fun getSingleOraWordById(id: Int): OraWord? {
         return dao.getOraWord(id).toOraWord()
     }
-
 
 
 

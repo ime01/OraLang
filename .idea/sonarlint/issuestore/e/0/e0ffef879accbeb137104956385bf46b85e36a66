@@ -1,7 +1,6 @@
 
-Skotlin:S14813"/Remove this unused "isPortrait" local variable.(¹àß¬øÿÿÿÿ8¹ŒÖ˜½1
->kotlin:S1128"Remove this unused import.(½ùÒ»ÿÿÿÿÿ8ş¦É˜½1
-9kotlin:S1128"Remove this unused import.(™òæÜ8ØÓÅ˜½1
-9kotlin:S1128"Remove this unused import.(Ù™®•8¡«Õ˜½1
->kotlin:S1128"Remove this unused import.(×ƒ‰üÿÿÿÿ8ş¦É˜½1
->kotlin:S1128&"Remove this unused import.(£ñ¹¸ûÿÿÿÿ8ş¦É˜½1
+=kotlin:S125y"Remove this commented out code.(Æœ³Î8ßóÕœ½1
+Skotlin:S14816"/Remove this unused "isPortrait" local variable.(¹àß¬øÿÿÿÿ8äóÕœ½1
+Pkotlin:S1481/",Remove this unused "context" local variable.(˜®¾‚øÿÿÿÿ8äóÕœ½1
+9kotlin:S1128"Remove this unused import.(™òæÜ8åóÕœ½1
+>kotlin:S1128"Remove this unused import.(×ƒ‰üÿÿÿÿ8æóÕœ½1
