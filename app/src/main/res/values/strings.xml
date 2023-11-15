@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">OraLang</string>
+    <string name="description">Enter Ora word</string>
+    <string name="title">Enter English word</string>
+    <string name="background">background</string>
+    <string name="save_oraword">Save OraWord</string>
+    <string name="complete_button">Complete button</string>
 </resources>
