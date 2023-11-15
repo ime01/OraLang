@@ -49,7 +49,7 @@ android {
     }
     packaging {
         resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            excludes += "META-INF/*"
         }
     }
 }
@@ -71,7 +71,9 @@ dependencies {
     androidTestImplementation(libs.bundles.androidTestImplementation)
     androidTestImplementation(platform(libs.compose.bom))
 
-
+    //Mockk
+    androidTestImplementation(libs.mockk.android)
+    //androidTestImplementation(libs.mockk.agent)
 
 
 
@@ -91,7 +93,6 @@ dependencies {
     kapt(libs.hilt.compiler)
 
 
-
     //Room
     implementation(libs.androidx.room)
     implementation(libs.androidx.room.runtime)
@@ -107,4 +108,9 @@ dependencies {
     //GSON
     implementation(libs.gson)
     implementation(libs.retrofit.converter)
+
+    //MOCKK FOR TESTING
+    testImplementation(libs.mockk.test)
+    testImplementation(libs.coroutines.test)
+    testImplementation(libs.robolectric)
 }

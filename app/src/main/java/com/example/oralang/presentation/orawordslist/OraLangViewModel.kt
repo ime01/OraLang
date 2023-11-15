@@ -11,6 +11,8 @@ import com.example.oralang.domain.usecase.OraWordsUseCaseResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.CoroutineExceptionHandler
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -20,8 +22,8 @@ class OraLangViewModel @Inject constructor(
     @IoDispatcher private val dispatcher: CoroutineDispatcher
 ) : ViewModel() {
 
-    private val _state = mutableStateOf(OraWordsListState(listOf()))
-    val state :State<OraWordsListState> = _state
+    private val _state = MutableStateFlow(OraWordsListState(listOf()))
+    val state :StateFlow<OraWordsListState> = _state
     private var undoOraWordDeleted: OraWord? = null
 
     private val errorHandler = CoroutineExceptionHandler {_, e ->
@@ -36,6 +38,7 @@ class OraLangViewModel @Inject constructor(
     fun getOraLangWords(){
 
         viewModelScope.launch(dispatcher + errorHandler) {
+
             val result = getOraWordsUseCase.getAllOraWords()
 
             when(result){
