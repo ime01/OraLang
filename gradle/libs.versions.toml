@@ -21,7 +21,7 @@
 
     lifecycle-viewmodel-compose-version = "2.6.2"
     material-icons-extended-version = "1.5.4"
-    hilt-navigation-compose-version = "1.1.0"
+    hilt-navigation-compose-version = "1.1.0-alpha01"
     kotlinx-coroutines-core-version = "1.7.3"
 
     dagger-hilt-android-version = "2.47"

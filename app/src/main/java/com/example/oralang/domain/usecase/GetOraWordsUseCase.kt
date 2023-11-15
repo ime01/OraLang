@@ -1,22 +1,57 @@
 package com.example.oralang.domain.usecase
 
-import com.example.oralang.data.local.provideListOfOraWords
-import com.example.oralang.data.repo.OraLangRepoImpl
+
 import com.example.oralang.domain.model.OraWord
 import com.example.oralang.domain.repo.OraLangRepo
-import kotlinx.coroutines.flow.Flow
+import com.example.oralang.utils.INVALID_ORAWORD_EXCEPTION
+import com.example.oralang.utils.InvalidOraWordException
 import javax.inject.Inject
 
 
-class GetOraWordsUseCase() {
+class GetOraWordsUseCase @Inject constructor(private val repo: OraLangRepo) {
 
-    val oraRepo = OraLangRepoImpl()
      suspend fun getAllOraWords(): OraWordsUseCaseResult {
 
-         return if (oraRepo.getAllOraWords().isNotEmpty()){
-             OraWordsUseCaseResult.Success(oraRepo.getAllOraWords())
+         var oraWords = repo.getAllOraWordsFromLocalCache()
+
+         if(oraWords.isEmpty()){
+             oraWords = repo.getAllOraWords()
+         }
+
+         return if (oraWords.isNotEmpty()){
+             OraWordsUseCaseResult.Success(oraWords)
          }else OraWordsUseCaseResult.Error("No Ora Words Found")
 
+    }
+
+
+    suspend fun addOraWord(oraWord: OraWord){
+        if(oraWord.englishWord.isBlank() || oraWord.oraWord.isBlank()){
+            throw InvalidOraWordException(INVALID_ORAWORD_EXCEPTION)
+        }
+        repo.addOraWord(oraWord)
+    }
+
+
+
+    suspend fun updateOraWord(oraWord: OraWord){
+        if(oraWord.englishWord.isBlank() || oraWord.oraWord.isBlank()){
+            throw InvalidOraWordException(INVALID_ORAWORD_EXCEPTION)
+        }
+        repo.updateOraWord(oraWord)
+    }
+
+
+    suspend fun deleteOraWord(oraWord: OraWord){
+        repo.deleteOraWord(oraWord)
+    }
+
+    suspend fun toggleIsFavoriteOraWord(oraWord: OraWord){
+        repo.updateOraWord(oraWord.copy(isFavoriteWord = !oraWord.isFavoriteWord))
+    }
+
+    suspend fun getOraWordById(id: Int): OraWord? {
+        return repo.getSingleOraWordById(id)
     }
 
 

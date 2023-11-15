@@ -2,6 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.devtools.ksp)
+    id("dagger.hilt.android.plugin")
+    id("kotlin-kapt")
     //alias(libs.plugins.android.hilt)
     //alias(libs.plugins.kotlin.kapt)
 }
@@ -85,9 +87,8 @@ dependencies {
 
     //Dagger - Hilt
     implementation(libs.dagger.hilt.android)
-
-//    kapt(libs.dagger.hilt.android.compiler)
-//    kapt(libs.hilt.compiler)
+    kapt(libs.dagger.hilt.android.compiler)
+    kapt(libs.hilt.compiler)
 
 
 

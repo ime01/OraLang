@@ -12,12 +12,13 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.oralang.presentation.orawordslist.components.OraItemCard
 import com.example.oralang.utils.toast
 
 
 @Composable
-fun OraWordsListScreen(viewModel: OraLangViewModel){
+fun OraWordsListScreen( viewModel: OraLangViewModel = hiltViewModel()){
 
     val context = LocalContext.current
 
