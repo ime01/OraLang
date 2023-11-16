@@ -1,6 +1,5 @@
 package com.example.oralang
 
-import com.example.oralang.data.local.LocalOraWord
 import com.example.oralang.data.local.OraWordDao
 import com.example.oralang.data.local.provideListOfRemoteOraWords
 import com.example.oralang.data.mapper.LocalOraWord
@@ -104,47 +103,6 @@ class OraLangRepoTest {
     }
 
 
-
-    //    @Test
-//    fun givenInInitialState_WhenServiceAndDatabaseReturnsData_ConfirmStateWithDataIsProduced() =
-//        runTest(coroutineRule.testDispatcher) {
-//            //Given
-//
-//            coEvery { oraWordService.getOraWords () } returns provideListOfRemoteOraWords()
-//
-//            coEvery { oraWordDao.addAllOraWord (provideListOfRemoteOraWords().toOraLocalWordList())
-//            } returns flowOf(provideListOfRemoteOraWords.toOraLocalWordList())
-//
-//            //When
-//            val oraLangRepo = OraLangRepoImpl(oraWordDao, oraWordService, dispatcher)
-//            val result = marsRoverPhotoRepo.getMarsRoverPhoto("perseverance", "0").toList()
-//
-//            //Then
-//            val expectedResult = OraWordsListState(
-//                roverPhotoUiModelList = listOf(
-//                    RoverPhotoUiModel(
-//                        id = 2,
-//                        roverName = "Perseverance",
-//                        imgSrc = "https://example.com/photo1",
-//                        sol = "20",
-//                        earthDate = "2022-07-02",
-//                        cameraFullName = "Camera One",
-//                        isSaved = true
-//                    ),
-//                    RoverPhotoUiModel(
-//                        id = 4,
-//                        roverName = "Perseverance",
-//                        imgSrc = "https://example.com/photo2",
-//                        sol = "20",
-//                        earthDate = "2022-07-02",
-//                        cameraFullName = "Camera Two",
-//                        isSaved = false
-//                    )
-//                )
-//            )
-//            assertEquals(1, result.size)
-//            assertEquals(expectedResult, result[0])
-//        }
 
 
 

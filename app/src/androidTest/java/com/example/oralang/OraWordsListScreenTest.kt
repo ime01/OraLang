@@ -43,7 +43,7 @@ class OraWordsListScreenTest {
     private val oraLangViewModel = mockk<OraLangViewModel>()
 
 
-//    @MockK
+//    @MockK()
 //    private lateinit var oraLangViewModel :OraLangViewModel
 
 
