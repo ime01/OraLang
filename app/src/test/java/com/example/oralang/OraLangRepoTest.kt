@@ -79,19 +79,28 @@ class OraLangRepoTest {
 
 
     @Test
-    fun givenInInitialState_WhenOraWordSave_ConfirmSaved() = runTest(coroutineRule.testDispatcher) {
+    fun givenInInitialState_WhenOraWordUpdate_ConfirmUpdate() = runTest(coroutineRule.testDispatcher) {
         //Given
-        val oraWord = OraWord(oraWord = "owha", englishWord = "house", isFavoriteWord = false, wordAudio = null, id = 5)
-        val remoteOraWord = RemoteOraWord(oraWord = "owha", englishWord = "house", isFavoriteWord = false, wordAudio = null, id = 5)
+        val oraWords = listOf(OraWord(oraWord = "owha", englishWord = "house", isFavoriteWord = false, wordAudio = null, id = 5),
+            OraWord(oraWord = "owha", englishWord = "house", isFavoriteWord = false, wordAudio = null, id = 5))
 
-        coEvery { oraWordDao.addOraWord(oraWord.toLocalOraWord()) } returns 1
+        val updatedOraWord = OraWord(oraWord = "owha2", englishWord = "house2", isFavoriteWord = false, wordAudio = null, id = 5)
+
+        coEvery { oraWordDao.addAllOraWord(oraWords.fromOraWordsToLocalOraWordList()) } returns Unit
+        coEvery { oraWordDao.updateOraWord(updatedOraWord.toLocalOraWord()) } returns Unit
+        coEvery { oraWordDao.getAllOraWords() } returns listOf(oraWords.fromOraWordsToLocalOraWordList()[1].copy(
+            oraWord = "owha2",
+            englishWord = "house2",
+            isFavoriteWord = false,
+            wordAudio = null,
+            id = 5))
 
         //When
         val oraLangRepoImpl = OraLangRepoImpl(oraWordDao, oraWordService, coroutineRule.testDispatcher)
-        oraLangRepoImpl.addOraWord(remoteOraWord.toOraWord())
+        oraLangRepoImpl.updateOraWord(updatedOraWord)
 
         //Then
-        coEvery { oraWordDao.addOraWord(oraWord.toLocalOraWord()) }
+        assertEquals(updatedOraWord.oraWord, oraWordDao.getAllOraWords()[0].oraWord)
     }
 
 
