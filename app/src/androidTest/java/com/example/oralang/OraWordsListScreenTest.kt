@@ -40,19 +40,19 @@ class OraWordsListScreenTest {
     val composeTestRule = createComposeRule()
 
     private val mockNavigationController = mockk<NavHostController>()
-    //private val oraLangViewModel = mockk<OraLangViewModel>()
+    private val oraLangViewModel = mockk<OraLangViewModel>()
 
 
-    @MockK
-    private lateinit var oraLangViewModel :OraLangViewModel
+//    @MockK
+//    private lateinit var oraLangViewModel :OraLangViewModel
 
 
 
     @Before
     fun setUp(){
 
-        MockKAnnotations.init(this)
-        oraLangViewModel = mockk()
+//        MockKAnnotations.init(this)
+//        oraLangViewModel = mockk()
 
         every { oraLangViewModel.getOraLangWords() } just runs
         every { oraLangViewModel.state } returns MutableStateFlow(OraWordsListState(emptyList()))
