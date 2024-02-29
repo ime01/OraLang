@@ -1,5 +1,6 @@
 package com.example.oralang.presentation.orawordslist
 
+import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -57,7 +58,7 @@ class OraLangViewModel @Inject constructor(
                  _state.value =  _state.value.copy(
                         error = result.message,
                         isLoading = false)
-
+                    Log.d("Error","Error fetching Ora word")
                 }
             }
         }
