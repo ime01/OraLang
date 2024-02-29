@@ -50,7 +50,7 @@ class OraLangViewModel @Inject constructor(
                  _state.value  =  _state.value.copy(
                         oraWords = result.todoItems,
                         isLoading = false)
-
+                    Log.d("Success","Success fetching Ora word")
                 }
 
                 is OraWordsUseCaseResult.Error->{
