@@ -61,7 +61,8 @@ class OraLangRepoTest {
     @Test
     fun givenInInitialState_WhenNewWordAdded_ConfirmWordReturnedMatches() = runTest(coroutineRule.testDispatcher) {
         //Given
-        val oraWords = listOf(OraWord(oraWord = "owha", englishWord = "house", isFavoriteWord = false, wordAudio = null, id = 5),
+        val oraWords = listOf(
+            OraWord(oraWord = "owha", englishWord = "house", isFavoriteWord = false, wordAudio = null, id = 5),
             OraWord(oraWord = "owha", englishWord = "house", isFavoriteWord = false, wordAudio = null, id = 5))
 
         coEvery { oraWordDao.addAllOraWord(oraWords.fromOraWordsToLocalOraWordList()) } just runs

@@ -93,7 +93,7 @@ fun DeleteButton(
             imageVector = Icons.Default.Delete,
             contentDescription = "Delete Button",
             tint = MaterialTheme.colorScheme.error,
-            modifier = Modifier.size(32.dp)
+            modifier = Modifier.size(24.dp)
         )
     }
 }

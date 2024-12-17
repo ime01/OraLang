@@ -45,6 +45,7 @@ import com.example.oralang.utils.UPDATE_SCREEN_NAV_ARGUMENT_ID
 import kotlinx.coroutines.launch
 
 
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun OraWordsListScreen(navController: NavController, viewModel: OraLangViewModel = hiltViewModel()){
@@ -59,7 +60,6 @@ fun OraWordsListScreen(navController: NavController, viewModel: OraLangViewModel
     val isPortrait = configuration.orientation == android.content.res.Configuration.ORIENTATION_PORTRAIT
 
     Log.d("LOCALDATA", "${state.value.oraWords}")
-
 
     LaunchedEffect(key1 = true){
         viewModel.getOraLangWords()

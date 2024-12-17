@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -51,17 +52,19 @@ fun OraWordCard(
            // CompleteButton(onCompleteClick, oraWordColors.textColor, oraWord.isFavoriteWord)
             Text(
                 text = oraWord.oraWord,
-                modifier =Modifier.padding(8.dp)
+                modifier =Modifier
+                    //.wrapContentSize()
+                    .padding(8.dp)
                     .weight(0.8f),
                 style = MaterialTheme.typography.headlineMedium,
                 fontWeight = Bold,
                 color = oraWordColors.textColor,
-                fontSize = 32.sp,
+                fontSize = 18.sp,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
 
-            ArchiveButton(onArchiveClick, oraWordColors.archiveIconColor)
+            //ArchiveButton(onArchiveClick, oraWordColors.archiveIconColor)
         }
         Row (
             modifier = modifier.fillMaxWidth(),
@@ -73,7 +76,7 @@ fun OraWordCard(
                         .weight(0.8f),
                     style = MaterialTheme.typography.bodyLarge,
                     color = oraWordColors.textColor,
-                    fontSize = 24.sp,
+                    fontSize = 14.sp,
                     maxLines = 10,
                     overflow = TextOverflow.Ellipsis
                 )

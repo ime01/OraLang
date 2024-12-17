@@ -104,6 +104,9 @@ dependencies {
     //Retrofit
     implementation(libs.retrofit)
 
+    //SplashScreen
+    implementation(libs.splashscreen)
+
 
     //GSON
     implementation(libs.gson)
